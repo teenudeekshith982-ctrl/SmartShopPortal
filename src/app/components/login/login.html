@@ -1,0 +1,58 @@
+<div class="login-wrapper">
+  <div class="card login-card shadow-lg border-0">
+
+    <div class="card-body p-5">
+
+      <div class="text-center mb-4">
+        <h2 class="fw-bold text-primary">SmartShop Portal</h2>
+        <p class="text-muted">
+          Sign in to access your dashboard
+        </p>
+      </div>
+
+      <form>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">
+            Username
+          </label>
+
+          <input
+            type="text"
+            [(ngModel)] = "loginModel.username"
+            name = 'username'
+            class="form-control form-control-lg"
+            placeholder="Enter username">
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label fw-semibold">
+            Password
+          </label>
+
+          <input
+            type="password"
+            [(ngModel)] = "loginModel.password"
+            name="password"
+            class="form-control form-control-lg"
+            placeholder="Enter password">
+        </div>
+
+        <button
+          type="button" (click)="login()"
+          class="btn btn-primary btn-lg w-100">
+          Login
+        </button>
+
+      </form>
+
+      <div class="text-center mt-4">
+        <small class="text-muted">
+          SmartShop Portal Assignment
+        </small>
+      </div>
+
+    </div>
+
+  </div>
+</div>
