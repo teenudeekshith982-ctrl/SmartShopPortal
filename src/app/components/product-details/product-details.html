@@ -1,1 +1,84 @@
-<p>product-details works!</p>
+@if(product()){
+
+<div class="container py-5">
+
+  <div class="product-container shadow-lg">
+
+    <button
+  class="btn btn-outline-secondary mb-4"
+  routerLink="/products" type="button">
+    
+  ← Back to Products
+
+</button>
+
+    <div class="row align-items-center">
+
+      <!-- Product Image -->
+
+      <div class="col-lg-5 text-center">
+
+        <img
+          [src]="product().thumbnail"
+          class="product-image"
+          alt="Product Image">
+
+      </div>
+
+      <!-- Product Details -->
+
+      <div class="col-lg-7">
+
+        <span class="badge bg-primary mb-3">
+          {{ product().category }}
+        </span>
+
+        <h1 class="product-title">
+          {{ product().title }}
+        </h1>
+
+        <p class="product-description">
+          {{ product().description }}
+        </p>
+
+        <div class="product-meta">
+
+          <div class="meta-item">
+            ⭐ {{ product().rating }}
+          </div>
+
+          <div class="meta-item">
+            📦 Stock: {{ product().stock }}
+          </div>
+
+          <div class="meta-item">
+            🏷️ {{ product().brand }}
+          </div>
+
+        </div>
+
+        <h2 class="price mt-4">
+          ₹ {{ product().price }}
+        </h2>
+
+        <div class="d-flex gap-3 mt-4">
+
+          <button class="btn btn-primary btn-lg">
+            Buy Now
+          </button>
+
+          <button class="btn btn-outline-primary btn-lg">
+            Add to Wishlist
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+}

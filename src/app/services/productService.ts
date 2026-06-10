@@ -24,4 +24,8 @@ export class ProductService {
   );
 
 }
+
+getProductById(id : number){
+  return this.http.get(`https://dummyjson.com/products/${id}`);
+}
 }

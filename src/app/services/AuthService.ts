@@ -29,4 +29,8 @@ export class AuthService {
 
     );
   }
+
+  getCurrentUser(){
+    return this.userSubject.value;
+  }
 }

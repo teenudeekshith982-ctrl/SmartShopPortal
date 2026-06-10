@@ -1,9 +1,10 @@
-import { Routes } from '@angular/router';
+import { mapToCanActivate, Routes } from '@angular/router';
 import { Login } from './components/login/login';
 import { Dashboard } from './components/dashboard/dashboard';
 import { Products } from './components/products/products';
 import { ProductDetails } from './components/product-details/product-details';
 import { Profile } from './components/profile/profile';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     {
@@ -17,20 +18,24 @@ export const routes: Routes = [
     },
     {
         path : 'dashboard',
-        component: Dashboard
+        component: Dashboard,
+        canActivate:[authGuard]
     },
     {
         path: 'products',
-        component: Products
+        component: Products,
+        canActivate:[authGuard]
     },
 
     {
         path: 'products/:id',
-        component: ProductDetails
+        component: ProductDetails,
+        canActivate:[authGuard]
     },
 
     {
         path: 'profile',
-        component: Profile
+        component: Profile,
+        canActivate:[authGuard]
     }
 ];

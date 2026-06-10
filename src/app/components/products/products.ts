@@ -1,27 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ProductService } from '../../services/productService';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-products',
-  imports: [CommonModule],
-  standalone : true,
+  imports: [RouterLink],
   templateUrl: './products.html',
-  styleUrls: ['./products.css'],
+  styleUrls: ['./products.css']
 })
-export class Products {
+export class Products implements OnInit {
 
-  products : any[] = [];
-  isLoading : boolean = true;
-  
-  constructor(private productservice : ProductService){
-    console.time('products');
-    productservice.getProducts().subscribe(data =>{
-      console.log(data);
-       console.timeEnd('products');
-      this.products = data;
-      this.isLoading = false;
-    })
+  products = signal<any[]>([]);
+  isLoading = signal(true);
+
+  constructor(
+    private productService: ProductService
+  ) {}
+
+  ngOnInit(): void {
+
+    this.productService.getProducts()
+      .subscribe(data => {
+
+        this.products.set(data);
+
+        this.isLoading.set(false);
+
+      });
+
   }
-
 }
